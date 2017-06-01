@@ -8,22 +8,12 @@ using System.Threading.Tasks;
 namespace DZ_Banka
 	{
 	class ThreadMakerClass
-		{
-		Thread thread;
-		string str = "";
+		{			
 		public ThreadMakerClass(string pole, string old_value, string new_value)
 			{
-			str = $" {DateTime.Now} властивість «{pole}»\t змінено «{old_value}» на  «{new_value}»";
-			thread = new Thread(LogMakerOut);
+			string str = $" {DateTime.Now} властивість «{pole}»\t змінено «{old_value}» на  «{new_value}»";
+			Thread thread = new Thread(() => LogerClass.LogMaker(str));			
 			thread.Start();
 			}
-
-		void LogMakerOut()
-			{
-			LogerClass.LogMaker(str);
-			}
-
-
-
 		}
 	}

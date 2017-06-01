@@ -32,6 +32,7 @@ namespace DZ_Banka
 				log_id++;							
 				Writer(log_id + str);
 				}
+			return;
 			}
 
 		static void Writer(string str)

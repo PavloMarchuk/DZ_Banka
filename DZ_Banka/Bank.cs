@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DZ_Banka
 	{
-	class Bank
+	class Bank : INotifyPropertyChanged
 		{
 		decimal money = 0;
 		string name = "Void_Name";
@@ -41,8 +42,6 @@ namespace DZ_Banka
 				}
 			}
 
-
-
-
+		public event PropertyChangedEventHandler PropertyChanged;
 		}
 	}
