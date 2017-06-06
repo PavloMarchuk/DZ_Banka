@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DZ_Banka
 	{
-	class Bank : INotifyPropertyChanged
+	public class Bank : INotifyPropertyChanged
 		{
 		decimal money = 0;
 		string name = "Void_Name";
@@ -20,6 +20,7 @@ namespace DZ_Banka
 			set {
 				ThreadMakerClass t = new ThreadMakerClass("Money", money.ToString(), value.ToString());
 				money = value;
+				OnPropertyChanged("Money");
 				}
 			}		
 
@@ -29,6 +30,7 @@ namespace DZ_Banka
 			set {
 				ThreadMakerClass t = new ThreadMakerClass("Name", name.ToString(), value.ToString());
 				name = value;
+				OnPropertyChanged("Name");
 				}
 			}
 			
@@ -39,9 +41,14 @@ namespace DZ_Banka
 			set {
 				ThreadMakerClass t = new ThreadMakerClass("Percent", percent.ToString(), value.ToString());
 				percent = value;
+				OnPropertyChanged("Percent");
 				}
 			}
 
 		public event PropertyChangedEventHandler PropertyChanged;
+		protected void OnPropertyChanged(String propertyName)
+			{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
